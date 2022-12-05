@@ -28,5 +28,5 @@ app.get('/restaurants/:num',(req,res)=>{
     res.render('show',{restaurantlist});
 })
 app.listen(port, () => {
-    console.log(port)
+    console.log(`This project is running on localhost:${port}`)
 })
