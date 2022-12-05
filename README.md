@@ -1,3 +1,7 @@
+# 專案畫面
+![image](https://user-images.githubusercontent.com/113624708/205727818-16af77a1-cf16-4887-ac13-67d4e8fb93f8.png)
+
+
 # 環境建置與需求 
 本專案使用的是
 1. 14.16.0 版的 Node.js
