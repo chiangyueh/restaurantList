@@ -5,5 +5,5 @@
 3. 第 5 版的 Bootstrap 
 
 # 安裝與執行步驟
-1.請先打開您的git並clone該專案至本地
+1.請先打開您的git並clone本專案至本地
     $git clone https://github.com/chiangyueh/restaurantList.git
