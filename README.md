@@ -1,5 +1,11 @@
 # 專案畫面
-![image](https://user-images.githubusercontent.com/113624708/205727818-16af77a1-cf16-4887-ac13-67d4e8fb93f8.png)
+首頁  
+![image](https://user-images.githubusercontent.com/113624708/205727818-16af77a1-cf16-4887-ac13-67d4e8fb93f8.png)  
+搜尋畫面  
+![image](https://user-images.githubusercontent.com/113624708/205728093-784cdd99-097e-48bd-8385-f3d897844088.png)
+詳情頁面  
+![image](https://user-images.githubusercontent.com/113624708/205728160-272283ef-500d-416a-aead-5b0c9dbdcb72.png)
+
 
 
 # 環境建置與需求 
