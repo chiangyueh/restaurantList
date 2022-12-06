@@ -23,7 +23,6 @@ app.get('/restaurants/:num',(req,res)=>{
     const restaurantlist = restaurantList.results.find(
         res => res.id.toString() === req.params.num
         );
-        console.log(restaurantlist)
     res.render('show',{restaurantlist});
 })
 app.listen(port, () => {
