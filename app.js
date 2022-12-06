@@ -12,7 +12,7 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/search',(req,res)=>{
-    const keyword = req.query.keyword;
+    const { keyword } = req.query;
     const restaurantlist = restaurantList.results.filter(res=>{
         return res.name.toLowerCase().includes(keyword.toLowerCase())
     });
