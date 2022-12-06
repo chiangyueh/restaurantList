@@ -13,14 +13,22 @@
 git clone https://github.com/chiangyueh/restaurantList.git
 ```  
 2.切換目錄至restaurantList專案資料夾  
-```cd restaurantList```    
+```bash
+cd restaurantList
+```    
 3.使用npm套件安裝相應模塊  
-```npm i```  
+```bash
+npm i
+```  
 4.啟動項目  
-```node app.js```  
+```bash
+node app.js
+```  
 如終端機輸出This project is running on localhost:3000代表本專案成功運行  
 可以於瀏覽器URL中輸入運行:  
-```localhost:3000/```  
+```bash
+localhost:3000/
+```  
 
 # 功能描述
 此項目實現了  
