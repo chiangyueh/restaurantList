@@ -1,7 +1,11 @@
 <div class="container add-form-bg">
+    {{#if restaurantlist}}
+    <h1>修改您的表單</h1>
+    {{else}}
     <h1>快填寫表單，新增你最愛的餐廳吧！</h1>
+    {{/if}}
     <form 
-    {{#if restaurantlist.name}}
+    {{#if restaurantlist}}
     action="/restaurants/{{ restaurantlist._id }}?_method=PUT"
     {{else}}
     action="/restaurants/add/submit" 
@@ -23,7 +27,7 @@
         <label for="id">
             <span>餐廳編號</span>
         </label>
-        <input type="text" name="id" id="id" placeholder="餐廳編號" {{#if restaurantlist.id }} value={{restaurantlist.id}} {{/if}}>
+        <input type="number" name="id" id="id" placeholder="餐廳編號" {{#if restaurantlist.id }} value={{restaurantlist.id}} {{/if}}>
 
         <label for="category">
             <span>餐廳類別</span>
@@ -34,7 +38,7 @@
         <label for="image">
             <span>餐廳照片網址</span>
         </label>
-        <input type="text" name="image" id="image" placeholder="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5635/01.jpg" {{#if restaurantlist.image }} value={{restaurantlist.image}} {{/if}}>
+        <input type="url" name="image" id="image" placeholder="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5635/01.jpg" {{#if restaurantlist.image }} value={{restaurantlist.image}} {{/if}}>
 
         <label for="location">
             <span>餐廳地點</span>
@@ -44,12 +48,14 @@
         <label for="phone">
             <span>餐廳電話</span>
         </label>
-        <input type="text" name="phone" id="phone" placeholder="02 2376 7755" {{#if restaurantlist.phone }} value='{{restaurantlist.phone}}' {{/if}}>
+        <input type="tel" name="phone" id="phone" placeholder="手機0912 345 678 或 市話02 1234 5678" 
+        pattern="^09\d{2}\s\d{3}\s\d{3}$|^02\s\d{4}\s\d{4}$"
+        {{#if restaurantlist.phone }} value='{{restaurantlist.phone}}' {{/if}}>
 
         <label for="google_map">
             <span>Google Map</span>
         </label>
-        <input type="text" name="google_map" id="google_map" placeholder="https://goo.gl/maps/BJdmLuVdDbw" {{#if restaurantlist.google_map }} value='{{restaurantlist.google_map}}' {{/if}}>
+        <input type="url" name="google_map" id="google_map" placeholder="https://goo.gl/maps/BJdmLuVdDbw" {{#if restaurantlist.google_map }} value='{{restaurantlist.google_map}}' {{/if}}>
 
         <label for="rating">
             <span>餐廳評分</span>
