@@ -2,9 +2,9 @@
     <h1>快填寫表單，新增你最愛的餐廳吧！</h1>
     <form 
     {{#if restaurantlist.name}}
-    action="/restaurant/{{ restaurantlist._id }}?_method=PUT"
+    action="/restaurants/{{ restaurantlist._id }}?_method=PUT"
     {{else}}
-    action="/restaurant/add/submit" 
+    action="/restaurants/add/submit" 
     {{/if}}
     method="POST" 
     class="restaurant-add-form">
