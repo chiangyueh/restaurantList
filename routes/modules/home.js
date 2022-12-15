@@ -28,4 +28,28 @@ router.get('/search', (req, res) => {
         res.render('index', { restaurantlist })
     })
 })
+
+router.post('/',(req,res)=>{
+	let sortMethod;
+    switch(req.body.mySelect){
+        case '0' :
+			sortMethod = {name_en : 'asc'};
+            break;
+        case '1' :
+            sortMethod = {name_en : 'desc'};
+            break;
+        case '2' : 
+        	sortMethod = {category : 'asc'};
+            break;
+        case '3' :
+            sortMethod = {location : 'asc'};
+            break;
+    }
+    Restaurant.find().sort(sortMethod).lean().then(
+        restaurantlist =>{
+            restaurantlist.mySelect = req.body.mySelect;
+            res.render('index',{restaurantlist})
+        }
+    )
+})
 module.exports = router
