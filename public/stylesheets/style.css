@@ -171,6 +171,12 @@ header {
   margin-bottom: 10px;
 }
 
+.restaurant-add-form textarea {
+  flex: 80%;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
 .restaurant-add-form>label :nth-child(2) {
   color: red;
 }
