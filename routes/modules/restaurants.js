@@ -10,7 +10,7 @@ router.get('/:_id/detail', (req, res) => {
     })
     .catch(error => {
         console.log(error);
-        res.status(404).render('errorPage')
+        res.status(410).render('errorPage',{message : '該筆資料不存在或已被刪除'})
     });
 })
 
@@ -22,7 +22,7 @@ router.get('/:_id/edit', (req, res) => {
     })
     .catch(error => {
         console.log(error);
-        res.status(404).render('errorPage')
+        res.status(410).render('errorPage',{message : '該筆資料不存在或已被刪除'})
     });
 })
 
@@ -35,7 +35,7 @@ router.post('/add', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => {
         console.log(error);
-        res.status(404).render('errorPage')
+        res.status(500).render('errorPage',{message : '哎呀！您的操作出錯了～'})
     })
 })
 
@@ -50,7 +50,7 @@ router.put('/:_id', (req, res) => {
     })
     .catch(error => {
         console.log(error);
-        res.status(404).render('errorPage')
+        res.status(500).render('errorPage',{message : '修改失敗，請聯繫管理員'})
     })
 })
 
@@ -60,7 +60,7 @@ router.delete('/:_id',(req,res)=>{
     .then(() => res.redirect('/'))
     .catch(error => {
         console.log(error);
-        res.status(404).render('errorPage')
+        res.status(410).render('errorPage',{message : '該筆資料已被刪除'})
     })
 })
 

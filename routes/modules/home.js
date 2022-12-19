@@ -16,7 +16,10 @@ router.get('/', (req, res) => {
         .then(restaurantlist => {
             res.render('index', { restaurantlist });
         })
-        .catch(error => console.error(error))
+        .catch(error => {
+            console.log(error);
+            res.status(500).render('errorPage',{message: '請求失敗，請聯繫管理員'})
+        })
 })
 
 router.get('/search', (req, res) => {
@@ -49,7 +52,7 @@ router.get('/search', (req, res) => {
     })
     .catch(error => {
         console.log(error);
-        res.status(404).render('errorPage')
+        res.status(500).render('errorPage',{message: '請求失敗，請聯繫管理員'})
     })
 })
 

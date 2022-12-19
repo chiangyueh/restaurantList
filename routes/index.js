@@ -10,7 +10,7 @@ const restaurants = require('./modules/restaurants')
 router.use('/restaurants', restaurants)
 
 router.get('*',(req,res)=>{
-    res.status(404).render('errorPage')
+    res.status(404).render({message : '您的頁面飛到火星啦~'})
 })
 
 // 匯出路由器
