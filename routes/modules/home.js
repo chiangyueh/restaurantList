@@ -2,7 +2,15 @@ const express = require('express');
 const router = express.Router();
 const Restaurant = require('../../models/resturant-list')
 
+const sortParam = {
+    '0' : {name_en : 'asc'},
+    '1' : {name_en : 'desc'},
+    '2' : {category : 'asc'},
+    '3' : {location : 'asc'}
+}
+
 router.get('/', (req, res) => {
+
     Restaurant.find({})
         .lean()
         .then(restaurantlist => {
@@ -12,8 +20,17 @@ router.get('/', (req, res) => {
 })
 
 router.get('/search', (req, res) => {
-    const keyword = req.query.keyword.trim();
+    let keyword = '';
+    req.query.keyword? keyword = req.query.keyword.trim() : '';
     const keywordRegExp = new RegExp(keyword, 'i');
+    let sortMethod;
+    if(req.query.mySelect){
+        let {mySelect} = req.query;
+        for(let key in sortParam){
+            key === mySelect? sortMethod = sortParam[key]: '';
+        }
+    }
+
     Restaurant.find({
         $or: [{
             name: {
@@ -24,32 +41,16 @@ router.get('/search', (req, res) => {
                 $regex: keywordRegExp
             }
         }]
-    }).lean().then((restaurantlist) => {
+    })
+    .sort(sortMethod)
+    .lean()
+    .then((restaurantlist) => {
         res.render('index', { restaurantlist })
+    })
+    .catch(error => {
+        console.log(error);
+        res.status(404).render('errorPage')
     })
 })
 
-router.post('/',(req,res)=>{
-	let sortMethod;
-    switch(req.body.mySelect){
-        case '0' :
-			sortMethod = {name_en : 'asc'};
-            break;
-        case '1' :
-            sortMethod = {name_en : 'desc'};
-            break;
-        case '2' : 
-        	sortMethod = {category : 'asc'};
-            break;
-        case '3' :
-            sortMethod = {location : 'asc'};
-            break;
-    }
-    Restaurant.find().sort(sortMethod).lean().then(
-        restaurantlist =>{
-            restaurantlist.mySelect = req.body.mySelect;
-            res.render('index',{restaurantlist})
-        }
-    )
-})
 module.exports = router

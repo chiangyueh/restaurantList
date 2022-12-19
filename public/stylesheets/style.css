@@ -189,6 +189,11 @@ header {
   color: #fff;
 }
 
+.return-last-page{
+  text-decoration: none;
+  color : white;
+}
+
 @media screen and (max-width: 992px) {
 
   .card img {

@@ -7,6 +7,10 @@ router.get('/:_id/detail', (req, res) => {
     .lean()
     .then((restaurantlist)=>{
         res.render('show',{restaurantlist})
+    })
+    .catch(error => {
+        console.log(error);
+        res.status(404).render('errorPage')
     });
 })
 
@@ -15,6 +19,10 @@ router.get('/:_id/edit', (req, res) => {
     .lean()
     .then((restaurantlist)=>{
         res.render('addRestaurant',{restaurantlist})
+    })
+    .catch(error => {
+        console.log(error);
+        res.status(404).render('errorPage')
     });
 })
 
@@ -22,10 +30,13 @@ router.get('/add', (req, res) => {
     res.render('addRestaurant');
 })
 
-router.post('/add/submit', (req, res) => {
+router.post('/add', (req, res) => {
     return Restaurant.create(req.body)
     .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
+    .catch(error => {
+        console.log(error);
+        res.status(404).render('errorPage')
+    })
 })
 
 router.put('/:_id', (req, res) => {
@@ -35,16 +46,22 @@ router.put('/:_id', (req, res) => {
         return restaurantUnit.save()
     })
     .then(()=>{
-        res.redirect('/')
+        res.redirect(`/restaurants/${req.params._id}/edit`)
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+        console.log(error);
+        res.status(404).render('errorPage')
+    })
 })
 
 router.delete('/:_id',(req,res)=>{
     return Restaurant.findById(req.params._id)
     .then(restaurantUnit => restaurantUnit.remove())
     .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
+    .catch(error => {
+        console.log(error);
+        res.status(404).render('errorPage')
+    })
 })
 
 module.exports = router

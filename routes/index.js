@@ -9,5 +9,9 @@ router.use('/', home)
 const restaurants = require('./modules/restaurants') 
 router.use('/restaurants', restaurants)
 
+router.get('*',(req,res)=>{
+    res.status(404).render('errorPage')
+})
+
 // 匯出路由器
 module.exports = router
